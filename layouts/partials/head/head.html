@@ -9,10 +9,18 @@
 <title>{{ $title }}</title>
 
 <link rel='canonical' href='{{ .Permalink }}'>
+{{ if .IsHome }}
+<link rel="me" href="https://github.com/gquetel/">
+<link rel="me" href="https://mastodon.social/@gquetel">
+<link rel="me" href="https://linkedin.com/in/grégor-quétel-08355b172">
+{{ end }}
 
 {{- partial "head/style.html" . -}}
 {{- partial "head/script.html" . -}}
 {{- partial "head/opengraph/include.html" . -}}
+{{- partial "head/schema/person.html" . -}}
+{{- partial "head/schema/article.html" . -}}
+{{- partial "head/schema/website.html" . -}}
 
 {{- range .AlternativeOutputFormats -}}
     <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
